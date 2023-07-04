@@ -1,4 +1,4 @@
-import Navbar from './components/Navbar';
+import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Chakra_Petch } from 'next/font/google';
 
@@ -18,7 +18,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        {children}
+        <section className='flex item-center  justify-center mt-20'>        
+            {children}
+        </section>
         </body>
     </html>
   )
