@@ -1,5 +1,6 @@
-import './globals.css'
-import { Chakra_Petch } from 'next/font/google'
+import Navbar from './components/Navbar';
+import './globals.css';
+import { Chakra_Petch } from 'next/font/google';
 
 const inter = Chakra_Petch({subsets:['latin'],weight:['300']})
 
@@ -15,7 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Navbar />
+        {children}
+        </body>
     </html>
   )
 }
