@@ -2,10 +2,6 @@ import { routes } from '@/models/MenuList'
 
 let routes: routes[] = [
   {
-    name: 'Home',
-    route: '/',
-  },
-  {
     name: 'All',
     route: '/all',
   },
@@ -32,10 +28,6 @@ let routes: routes[] = [
 ];
 
 let dta: routes[] = [
-  {
-    name: 'supports@admin.com',
-    route: '/',
-  },
   {
     name: 'My Orders',
     route: '/orders',

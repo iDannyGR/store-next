@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <section className='flex item-center  justify-center mt-20'>        
+        <section className='flex mt-20 justify-center'>        
             {children}
         </section>
         </body>

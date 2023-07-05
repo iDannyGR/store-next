@@ -1,26 +1,38 @@
+'use client';
 import React from 'react';
 import Image from 'next/image';
-import headphones from '@/components/Card/headphones.jpg'
+import { GetData } from '@/models/GetData';
+import  PlusCircleIcon  from '@heroicons/react/20/solid/PlusCircleIcon';
 
-type Props = {}
+type Props = {
+  product: GetData
+}
 
-const card = (props: Props) => {
+const card = ({product}: Props):React.ReactElement => {
   return (
-    <div className="h-72 w-56 border border-gray-50 cursor-pointer shadow-2xl rounded-xl">
+    <div className="h-64 w-56 cursor-pointer rounded-xl border border-gray-300 bg-white shadow-2xl shadow-yellow-200">
       <figure className="relative mb-2 h-4/5 w-full">
-        <span className="absolute bottom-0 left-0 bg-amber-400/60 p-1 rounded-lg font-bold">Electronics</span>
-        <Image 
-          src={headphones} 
+        <span className="absolute bottom-4 left-0 rounded-lg bg-amber-400/60 p-1 font-bold">
+          {product.category}
+        </span>
+        <Image
+          src={product.image}
           alt={'a headphones'}
-          className='object-cover '
-          />
+          width={350}
+          height={350}
+          className="m-0 h-full w-full rounded-xl object-cover"
+        />
+        <button onClick={() => console.log('click me')}>
+          <PlusCircleIcon className="absolute right-0 top-0 h-6 w-6 text-red-500" />
+        </button>
       </figure>
-        <p className="flex items-center justify-between m-2">
-          <span className="text-sm font-light">headphone</span>
-          <span className="text-lg font-bold">$300</span>
-        </p>
+      <p className="m-2 flex items-center justify-between">
+        <span className="text-sm font-light truncate">{product.title}</span>
+        <span className="text-lg font-bold">{product.price}</span>
+      </p>
     </div>
   );
 }
 
 export default card
+
