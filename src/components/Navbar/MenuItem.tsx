@@ -15,8 +15,8 @@ const MenuItem = ({ menu }: Props) => {
 
   return (
     <ul className='m-5 flex gap-3 font-semibold'>
-      {menu.map((item: routes) => (
-        <li>
+      {menu.map((item: routes, index:number) => (
+        <li key={index}>
           <Link
             href={item.route}
             className={

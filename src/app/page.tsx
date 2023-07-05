@@ -1,4 +1,4 @@
-import Card from '@/components/card'
+import Card from '@/components/Card/Card'
 export default function Home() {
   return (
    <section>
