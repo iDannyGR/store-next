@@ -1,4 +1,4 @@
-import Card from '@/components/Card/Card';
+import Card from '@/components/Card';
 import { GetData } from '@/models/GetData';
 
 async function getData(): Promise<GetData[]> {
@@ -16,7 +16,7 @@ async function getData(): Promise<GetData[]> {
  export default async function Home() {
  const data = await getData()
   return (
-    <section className="mt-20 grid grid-cols-4 gap-4 w-full max-w-screen-xl">
+    <section className="mt-20 grid grid-cols-4 gap-12">
       {data.map((product) => (
         <Card product={product} />
       ))}

@@ -3,7 +3,7 @@ import { routes } from '@/models/MenuList'
 let routes: routes[] = [
   {
     name: 'All',
-    route: '/all',
+    route: '/',
   },
   {
     name: 'Clothes',
