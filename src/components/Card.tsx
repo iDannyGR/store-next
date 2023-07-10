@@ -25,7 +25,7 @@ const card = ({product}: Props):React.ReactElement => {
           height={350}
           className="m-0 h-full w-full rounded-xl object-cover"
         />
-        <button onClick={() => setArticle()}>
+        <button onClick={() => setArticle( product )}>
           <PlusCircleIcon className="absolute right-0 top-0 h-6 w-6 text-red-500" />
         </button>
       </figure>
