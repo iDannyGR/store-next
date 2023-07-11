@@ -1,9 +1,7 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Chakra_Petch } from 'next/font/google';
-import ProductDetail from '@/components/ShoppingCart/ProductDetail';
 import ProductsCart from '@/components/ShoppingCart/ProductsCart';
-
 const inter = Chakra_Petch({subsets:['latin'],weight:['300']})
 
 export const metadata = {
@@ -21,10 +19,10 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <ProductsCart />
-        <section className='flex mt-20 justify-center'>        
-            {children}
+        <section className="mt-20 flex justify-center">
+          {children}
         </section>
-        </body>
+      </body>
     </html>
-  )
+  );
 }

@@ -8,8 +8,8 @@ type Props = {
 
 const ProductDetail = ({product}: Props): React.ReactElement => {
   return <div className='w-full h-1/4'>
-      
-    </div>;
+      <p>{product.title}</p>
+    </div>
 };
 
 export default ProductDetail;
