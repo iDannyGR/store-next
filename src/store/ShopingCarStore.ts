@@ -15,7 +15,7 @@ export const ShopingCarStore = create(
   persist<State & Actions>(
     (set) => ({
       item: [],
-      setArticle: (article) => set( state =>({ item:[...state.item, article ] })),
+      setArticle: (article) => set(state =>({item: [...state.item, article ] })),
       deleteArticle: (id) => set( state =>({ item: state.item.filter(article => article.id !== id)}))
     }),
     { name: 'MyCart' }
