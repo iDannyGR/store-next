@@ -1,7 +1,7 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Chakra_Petch } from 'next/font/google';
-import ProductsCart from '@/components/ShoppingCart/ProductsCart';
+import ProductsCart from '@/components/ShoppingCart';
 const inter = Chakra_Petch({subsets:['latin'],weight:['300']})
 
 export const metadata = {
