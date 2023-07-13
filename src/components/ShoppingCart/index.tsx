@@ -13,7 +13,7 @@ const ProductsCart = (): React.ReactElement => {
   return (
     <aside
       className={cx(
-        'fixed right-0 z-20 flex w-96 flex-col rounded-lg border bg-white transition-all duration-150 ease-in-out',
+        'fixed right-3 mt-3 z-20 flex w-96 flex-col rounded-lg border bg-white transition-all duration-150 ease-in-out',
         { hidden: isOpen == false }
       )}
     >
