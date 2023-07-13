@@ -13,11 +13,14 @@ const ProductsCart = (): React.ReactElement => {
   return (
     <aside
       className={cx(
-        'fixed right-3 mt-3 z-20 flex w-96 flex-col rounded-lg border bg-white transition-all duration-150 ease-in-out',
-        { hidden: isOpen == false }
+        'fixed right-8 z-20 mt-3 flex w-96 p-3 flex-col rounded-lg border bg-white transition ease-in-out duration-150',
+        {
+          'hidden translate-x-0 opacity-0 ': isOpen == false,
+          'visible translate-x-5 opacity-100': isOpen == true
+        }
       )}
     >
-      <p className="text-center text-lg font-bold">My Cart</p>
+      <p className="text-center text-lg font-bold mt-4">Products Details</p>
       <XMarkIcon
         className="absolute right-1 top-1 h-6 w-6 cursor-pointer text-red-500"
         onClick={() => setisOpen(false)}
