@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { ShopingCarStore, ArticleDetail } from '@/store/ShopingCarStore';
 import { GetData } from '@/models/GetData';
 import  PlusCircleIcon  from '@heroicons/react/20/solid/PlusCircleIcon';
 
@@ -12,9 +12,14 @@ type Props = {
 const card = ({product}: Props):React.ReactElement => {
 
       const { setArticle } = ShopingCarStore();
+      const { setItem } = ArticleDetail();
       
       return (
-    <div className="h-64 w-56 cursor-pointer rounded-xl border border-gray-300 bg-white shadow-md" key={product.id}>
+    <div 
+    className="h-64 w-56 cursor-pointer rounded-xl border border-gray-300 bg-white shadow-md" 
+    key={product.id}
+    onClick={()=> setItem(product)}
+    >
       <figure className="relative mb-2 h-4/5 w-full">
         <span className="absolute bottom-4 left-0 rounded-lg bg-amber-400/60 p-1 font-bold">
           {product.category}

@@ -2,7 +2,7 @@
 import React from 'react';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
-import ProductDetail from './ProductDetail';
+import ProductDetail from '../Notifications/ProductDetail';
 import cx from 'classnames'
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
@@ -20,7 +20,7 @@ const ProductsCart = (): React.ReactElement => {
         }
       )}
     >
-      <p className="text-center text-lg font-bold mt-4">Products Details</p>
+      <p className="text-center text-lg font-bold mt-4">Product Details</p>
       <XMarkIcon
         className="absolute right-1 top-1 h-6 w-6 cursor-pointer text-red-500"
         onClick={() => setisOpen(false)}

@@ -12,8 +12,11 @@ type Props = {
 
 const ProductDetail = ({product}: Props): React.ReactElement => {
     const { deleteArticle } = ShopingCarStore()
+
   return (
-    <div className="relative flex h-1/4 w-full mt-4 p-2 flex-col items-center justify-between gap-2 border-dashed border-b-2">
+    <div 
+    className="relative flex h-1/4 w-full mt-4 p-2 flex-col items-center justify-between gap-2 border-dashed border-b-2"
+    >
       <TrashIcon
         className="absolute right-1 top-4 h-6 w-6 cursor-pointer text-neutral-800 transition duration-200 ease-in hover:scale-150"
         onClick={() => deleteArticle(product.id)}
