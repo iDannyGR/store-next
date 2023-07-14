@@ -14,10 +14,12 @@ interface Actions {
 }
 
 type State2 = {
-  item:GetData
+  item:GetData,
+  isShow: boolean
 }
 interface Actions2{
-  setItem: (article:GetData) => void 
+  setItem: (article:GetData) => void, 
+  setisShow: (value:boolean) => void 
 }
 
 export const ShopingCarStore = create(
@@ -43,5 +45,7 @@ export const ArticleDetail = create<State2 & Actions2>((set) => ({
     rating: { count: 0, rate: 0 },
     title: ''
   },
-  setItem: (article) => set((state) => ({ item: article }))
+  isShow: false,
+  setItem: (article) => set((state) => ({ item: article })),
+  setisShow: (value) => set((state) => ({ isShow: value }))
 }));
