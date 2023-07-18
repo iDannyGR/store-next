@@ -4,6 +4,7 @@ import { GetData } from '@/models/GetData';
 import { TrashIcon } from '@heroicons/react/24/outline';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
 import Image from 'next/image';
+import AddRemoveButton from '../buttons/AddRemoveButton';
 
 
 type Props = {
@@ -14,7 +15,7 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
     const { deleteArticle } = ShopingCarStore()
 
   return (
-    <div className="my-1 flex w-full items-center justify-between p-3">
+    <div className="flex w-full items-center justify-between p-3">
       <div className="flex items-center justify-center">
         <Image
           src={product.image}
@@ -23,9 +24,12 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
           alt={product.title}
           className="rounded-lg object-cover"
         />
-        <p className="overflow-ellipsis overflow-hidden text-sm text-center font-light w-52">{product.title}</p>
+        <p className="w-40 overflow-hidden overflow-ellipsis text-center text-sm font-light">
+          {product.title}
+        </p>
       </div>
-      <p className="text-lg font-medium"> $ {product.price}</p>
+      <AddRemoveButton />
+      <p className="text-md"> $ {product.price.toFixed(2)}</p>
       <TrashIcon
         className="h-6 w-6 cursor-pointer text-rose-800 transition duration-200 ease-in hover:scale-150"
         onClick={() => deleteArticle(product.id)}

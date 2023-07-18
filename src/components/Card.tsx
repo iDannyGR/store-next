@@ -1,7 +1,8 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { ShopingCarStore, ArticleDetail } from '@/store/ShopingCarStore';
+import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { ArticleDetail } from '@/store/ArticleDetailStore';
 import { GetData } from '@/models/GetData';
 import  PlusCircleIcon  from '@heroicons/react/20/solid/PlusCircleIcon';
 

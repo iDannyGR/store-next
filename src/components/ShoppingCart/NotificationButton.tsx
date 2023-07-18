@@ -1,10 +1,12 @@
 'use client'
 import React from 'react';
 import { ShoppingCartIcon } from '@heroicons/react/24/outline';
-import { ShopingCarStore, ArticleDetail } from '@/store/ShopingCarStore';
+import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { ArticleDetail } from '@/store/ArticleDetailStore';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
 
-const NotificationCart = ():React.ReactElement=> {
+const NotificationButton = ():React.ReactElement=> {
+  
   const { item, setisOpen, isOpen } = ShopingCarStore();
   const { setisShow } = ArticleDetail();
   const hydration = useHasHydrated();
@@ -22,4 +24,4 @@ const NotificationCart = ():React.ReactElement=> {
     );
 }
 
-export default NotificationCart
+export default NotificationButton;

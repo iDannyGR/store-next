@@ -2,50 +2,61 @@ import { create } from 'zustand';
 import { persist } from 'zustand/middleware'
 import { GetData, Rating } from '@/models/GetData';
 
-interface State{
-    item: GetData[],
-    isOpen: boolean
+interface State {
+  item: { [id: number]: GetData }; //find products by id
+  isOpen: boolean;
 }
+
 
 interface Actions {
   setArticle: (article:GetData) => void;
   deleteArticle: (id:GetData['id']) => void;
   setisOpen: (value:boolean) => void;
+  setSumProduct: (id:GetData['id']) => void;
+  setSustProduct: (id:GetData['id']) => void;
 }
 
-type State2 = {
-  item:GetData,
-  isShow: boolean
-}
-interface Actions2{
-  setItem: (article:GetData) => void, 
-  setisShow: (value:boolean) => void 
-}
 
 export const ShopingCarStore = create(
   persist<State & Actions>(
     (set) => ({
-      item: [],
+      item: {},
       isOpen: false,
-      setArticle: (article) => set(state =>({item: [...state.item, article ] })),
-      setisOpen: (value) => set(state =>({isOpen: value })),
-      deleteArticle: (id) => set( state =>({ item: state.item.filter(article => article.id !== id)}))
+      setArticle: (article) => set((state) => ({ item: { ...state.item, [article.id]: article } })),
+      setisOpen: (value) => set((state) => ({ isOpen: value })),
+      deleteArticle: (id) =>
+        set((state) => {
+          const { [id]: removedItem, ...restItems } = state.item;
+          return { item: restItems };
+        }),
+      setSumProduct: (id) =>
+        set((state) => {
+          const itemToUpdate = state.item[id];
+          if (itemToUpdate) {
+            const updatedItem = {
+              ...itemToUpdate,
+              quantity: itemToUpdate.quantity + 1,
+              total: itemToUpdate.total + itemToUpdate.price
+            };
+            return { item: { ...state.item, [id]: updatedItem } };
+          }
+          return state;
+        }),
+      setSustProduct: (id) =>
+        set((state) => {
+          const itemToUpdate = state.item[id];
+          if (itemToUpdate && itemToUpdate.quantity > 0) {
+            const updatedItem = {
+              ...itemToUpdate,
+              quantity: itemToUpdate.quantity - 1,
+              total: itemToUpdate.total - itemToUpdate.price
+            };
+            return { item: { ...state.item, [id]: updatedItem } };
+          }
+          return state;
+        })
     }),
     { name: 'MyCart' }
   )
 );
     
-export const ArticleDetail = create<State2 & Actions2>((set) => ({
-  item: {
-    id: 0,
-    category: '',
-    description: '',
-    image: '',
-    price: 0,
-    rating: { count: 0, rate: 0 },
-    title: ''
-  },
-  isShow: false,
-  setItem: (article) => set((state) => ({ item: article })),
-  setisShow: (value) => set((state) => ({ isShow: value }))
-}));
