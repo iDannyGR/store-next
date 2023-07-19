@@ -16,7 +16,8 @@ const AddRemoveButton = ({id}: Props):React.ReactElement => {
         <p onClick={()=> setSustProduct(id)}>-</p>
         <input 
             type="text" 
-            className='text-center w-10 m-2'/>
+            className='text-center w-10 m-2'
+            value={item[id].quantity}/>
         <p onClick={()=> setSumProduct(id)}>+</p>
     </div>
   )

@@ -28,7 +28,7 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
           {product.title}
         </p>
       </div>
-      <AddRemoveButton />
+      <AddRemoveButton id={product.id}/>
       <p className="text-md"> $ {product.price.toFixed(2)}</p>
       <TrashIcon
         className="h-6 w-6 cursor-pointer text-rose-800 transition duration-200 ease-in hover:scale-150"

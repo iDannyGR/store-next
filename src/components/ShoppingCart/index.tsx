@@ -12,13 +12,13 @@ const ProductsCart = (): React.ReactElement => {
   const hydration = useHasHydrated();
   const { item, setisOpen, isOpen } = ShopingCarStore();
   const totalPrice = parseFloat(
-    Object.values(item).reduce((total, item) => total + item.price, 0).toFixed(2)
+    Object.values(item).reduce((total, item) => total + item.total, 0).toFixed(2)
   );
-
+    console.log(item);
   return (
     <aside
       className={cx(
-        'fixed right-8 z-20 mt-3 flex w-[450px] flex-col items-center overflow-y-auto rounded-lg border bg-white',
+        'fixed flex flex-col right-14 z-20 mt-3 w-[450px] h-[90vh] items-center rounded-lg bg-white border border-slate-300 shadow-xl',
         {
           'hidden translate-x-0 opacity-0 ': isOpen == false,
           'visible translate-x-5 opacity-100': isOpen == true
@@ -30,8 +30,11 @@ const ProductsCart = (): React.ReactElement => {
         className="absolute right-1 top-1 h-6 w-6 cursor-pointer text-red-500"
         onClick={() => setisOpen(false)}
       />
-      {hydration && item.map((article, index) => <ProductDetail product={article} key={index} />)}
-      {hydration && <TotalPriceButton total={totalPrice} />}
+      <div className='w-full h-[78vh] overflow-y-scroll flex flex-col'>
+        {hydration &&
+          Object.values(item).map((article, index) => <ProductDetail product={article} key={index} />)}
+      </div>
+        {hydration && <TotalPriceButton total={totalPrice} />}
     </aside>
   );
 };

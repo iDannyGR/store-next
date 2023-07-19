@@ -1,18 +1,18 @@
 import React from 'react';
 import MenuItem from './MenuItem';
 import {dta, routes } from '@/assets/ListMenus'
-import NotificationCart from '../ShoppingCart/NotificationButton';
+import NotificationButton from '../ShoppingCart/NotificationButton';
 
 
 
 const Navbar = () => {
   return (
-    <nav className='sticky top-0 flex z-10 bg-white shadow-lg'>
-      <div className='flex justify-between w-[90%]'>
-        <MenuItem menu={routes} mainTitle='Store'/>
-        <MenuItem menu={dta} mainTitle='soporte@admin.com' /> 
+    <nav className="sticky top-0 z-10 flex bg-white shadow-lg">
+      <div className="flex w-[90%] justify-between">
+        <MenuItem menu={routes} mainTitle="Store" />
+        <MenuItem menu={dta} mainTitle="soporte@admin.com" />
       </div>
-      <NotificationCart />
+      <NotificationButton />
     </nav>
   );
 }

@@ -22,7 +22,16 @@ export const ShopingCarStore = create(
     (set) => ({
       item: {},
       isOpen: false,
-      setArticle: (article) => set((state) => ({ item: { ...state.item, [article.id]: article } })),
+      setArticle: (article) =>
+        set((state) => {
+          const existingItem = state.item[article.id];
+          const newItem = {
+            ...article,
+            quantity: existingItem ? existingItem.quantity + 1 : 1,
+            total: existingItem ? (existingItem.quantity + 1) * article.price : article.price
+          };
+          return { item: { ...state.item, [article.id]: newItem } };
+        }),
       setisOpen: (value) => set((state) => ({ isOpen: value })),
       deleteArticle: (id) =>
         set((state) => {

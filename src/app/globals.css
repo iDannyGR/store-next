@@ -5,3 +5,18 @@
 *{
   box-sizing: border-box;
 }
+
+::-webkit-scrollbar {
+  width: 9.5px;
+  border-radius: 8px;
+  background-color: #d4d4d4;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background-color: #787878;
+  &:hover {
+    cursor: pointer;
+    background-color: hsl(250, 8%, 65%);
+  }
+}
