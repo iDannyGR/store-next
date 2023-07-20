@@ -1,16 +1,16 @@
 import { create } from 'zustand';
 import { GetData } from '@/models/GetData';
 
-type State2 = {
+type State = {
   item: GetData;
   isShow: boolean;
 };
-interface Actions2 {
+interface Actions {
   setItem: (article: GetData) => void;
   setisShow: (value: boolean) => void;
 }
 
-export const ArticleDetail = create<State2 & Actions2>((set) => ({
+export const ArticleDetail = create<State & Actions>((set) => ({
   item: {
     id: 0,
     category: '',
