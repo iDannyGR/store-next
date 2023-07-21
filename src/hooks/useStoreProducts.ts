@@ -1,13 +1,11 @@
 import { ShopingCarStore } from '@/store/ShopingCarStore';
 import { GetData } from '@/models/GetData';
 
-type value = {
-  id: GetData['id'];
-};
+
 
 export const useStoreProducts = ()=>{
   
-  const { item, setArticle } = ShopingCarStore();
+  const { item, setArticle, deleteArticle } = ShopingCarStore();
 
   const addProduct = (product:GetData) => {
 
@@ -22,7 +20,7 @@ export const useStoreProducts = ()=>{
         setArticle(newItem)
     }
 
-    const setSumProduct = ({id}: value) => {
+    const setSumProduct = (id: GetData['id']) => {
       const itemToUpdate = item[id];
       if (itemToUpdate) {
         const updatedItem = {
@@ -34,7 +32,7 @@ export const useStoreProducts = ()=>{
       }
     };
 
-    const setRemProduct = ({id}:value) => {
+    const setRemProduct = ( id : GetData['id']) => {
       const itemToUpdate = item[id];
 
       if (itemToUpdate && itemToUpdate.quantity > 0) {
@@ -44,6 +42,8 @@ export const useStoreProducts = ()=>{
           total: itemToUpdate.total - itemToUpdate.price
         };
         setArticle(updatedItem);
+      } else if (itemToUpdate && itemToUpdate.quantity === 0) {
+        deleteArticle(id);
       }
     };
     

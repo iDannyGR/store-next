@@ -14,7 +14,6 @@ const NotificationButton = ():React.ReactElement=> {
     const handleClick = () =>{
       setisOpen(!isOpen);
       setisShow(false);
-      console.log(item);
     }
 
   return (

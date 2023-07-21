@@ -5,7 +5,6 @@ import {  ArticleDetail } from '@/store/ArticleDetailStore';
 import cx from 'classnames';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import ProductDescription from './ProductDescription';
-import AddRemoveButton from '../buttons/AddRemoveButton';
 
 const NotificationItem = (): React.ReactElement => {
   const { item, isShow, setisShow } = ArticleDetail();

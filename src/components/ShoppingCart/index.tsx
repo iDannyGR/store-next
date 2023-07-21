@@ -29,7 +29,7 @@ const ProductsCart = (): React.ReactElement => {
         className="absolute right-1 top-1 h-6 w-6 cursor-pointer text-red-500"
         onClick={() => setisOpen(false)}
       />
-      <div className='w-full h-[78vh] overflow-y-scroll flex flex-col'>
+      <div className='w-full h-[78vh] overflow-y-auto flex flex-col'>
         {hydration &&
           Object.values(item).map((article, index) => <ProductDetail product={article} key={index} />)}
       </div>
