@@ -2,25 +2,23 @@
 
 import React from 'react';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { useStoreProducts } from '@/hooks/useStoreProducts';
 type Props = {
   id:number
 }
 
 const AddRemoveButton = ({id}: Props):React.ReactElement => {
       
-      const {setSumProduct, setSustProduct, item } = ShopingCarStore();
-    console.log(item);
+      const { item } = ShopingCarStore();
+       const { setRemProduct, setSumProduct}= useStoreProducts()
   
       return (
-    <div className='flex items-center justify-center border w-[90px] h-10 rounded-3xl text-center font-semibold cursor-pointer'>
-        <p onClick={()=> setSustProduct(id)}>-</p>
-        <input 
-            type="text" 
-            className='text-center w-10 m-2'
-            value={item[id].quantity}/>
-        <p onClick={()=> setSumProduct(id)}>+</p>
-    </div>
-  )
+        <div className="flex h-10 w-[90px] cursor-pointer items-center justify-center rounded-3xl border text-center font-semibold">
+          <p onClick={()=> setRemProduct({id})}>-</p>
+          <input type="text" className="m-2 w-10 text-center" value={item[id].quantity} readOnly/>
+          <p onClick={() => setSumProduct({id}) } >+</p>
+        </div>
+      );
 }
 
 export default AddRemoveButton

@@ -1,23 +1,27 @@
 import { ShopingCarStore } from '@/store/ShopingCarStore';
-import { GetData, Rating } from '@/models/GetData';
+import { GetData } from '@/models/GetData';
 
 type value = {
   id: GetData['id'];
 };
 
-const { item, setArticle } = ShopingCarStore();
 export const useStoreProducts = ()=>{
+  
+  const { item, setArticle } = ShopingCarStore();
 
-    const addProduct = (product:GetData) => {
+  const addProduct = (product:GetData) => {
 
         const existingItem = item[product.id];
+
         const newItem = {
           ...product,
           quantity: existingItem ? existingItem.quantity + 1 : 1,
           total: existingItem ? (existingItem.quantity + 1) * product.price : product.price
         };
+        console.log(newItem)
         setArticle(newItem)
     }
+
     const setSumProduct = ({id}: value) => {
       const itemToUpdate = item[id];
       if (itemToUpdate) {
@@ -26,7 +30,7 @@ export const useStoreProducts = ()=>{
           quantity: itemToUpdate.quantity + 1,
           total: itemToUpdate.total + itemToUpdate.price
         };
-        setArticle(itemToUpdate);
+        setArticle(updatedItem);
       }
     };
 
@@ -39,7 +43,7 @@ export const useStoreProducts = ()=>{
           quantity: itemToUpdate.quantity - 1,
           total: itemToUpdate.total - itemToUpdate.price
         };
-        setArticle(itemToUpdate);
+        setArticle(updatedItem);
       }
     };
     

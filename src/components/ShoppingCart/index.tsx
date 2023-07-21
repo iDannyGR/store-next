@@ -14,7 +14,6 @@ const ProductsCart = (): React.ReactElement => {
   const totalPrice = parseFloat(
     Object.values(item).reduce((total, item) => total + item.total, 0).toFixed(2)
   );
-    console.log(item);
   return (
     <aside
       className={cx(

@@ -20,15 +20,15 @@ export const ShopingCarStore = create(
     (set) => ({
       item: {},
       isOpen: false,
-      setArticle: (article) => set((state) => ({ ...state.item, [article.id]: article })),
+      setArticle: (article) => set((state) => ({...state, item: {...state.item, [article.id]: article }})),
       setisOpen: (value) => set((state) => ({ isOpen: value })),
       deleteArticle: (id) =>
         set((state) => {
           const { [id]: removedItem, ...restItems } = state.item;
           return { item: restItems };
-        }),
+        })
     }),
     { name: 'MyCart' }
   )
 );
-    
+    ;

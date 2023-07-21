@@ -2,6 +2,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { useStoreProducts } from '@/hooks/useStoreProducts';
 import { ArticleDetail } from '@/store/ArticleDetailStore';
 import { GetData } from '@/models/GetData';
 import  PlusCircleIcon  from '@heroicons/react/20/solid/PlusCircleIcon';
@@ -12,8 +13,9 @@ type Props = {
 
 const card = ({product}: Props):React.ReactElement => {
 
-      const { setArticle, setisOpen  } = ShopingCarStore();
+      const {  setisOpen  } = ShopingCarStore();
       const { setItem, setisShow } = ArticleDetail();
+      const { addProduct } = useStoreProducts()
       
     const handleClick = (item:GetData) => { 
           setisShow(true);
@@ -38,7 +40,7 @@ const card = ({product}: Props):React.ReactElement => {
               className="m-0 h-full w-full rounded-xl object-cover"
               onClick={() => handleClick(product)}
             />
-            <button onClick={() => setArticle(product)}>
+            <button onClick={() => addProduct(product)}>
               <PlusCircleIcon className="absolute right-0 top-0 h-6 w-6 text-red-500" />
             </button>
           </figure>
