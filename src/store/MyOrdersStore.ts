@@ -7,12 +7,12 @@ interface Actions {
   setOrder: (item: { [id: number]: GetData }) => void;
 }
 interface Orders {
-    Orders :{}
+    Orders :MyOrders[]
 }
 export const ShopingCarStore = create(
   persist<Orders & Actions>(
     (set) => ({
-      Orders:{},
+      Orders:[],
       setOrder: (item) => set((state) => ({ ...state, items: { item } }))
     }),
     { name: 'MyOrders' }
