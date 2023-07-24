@@ -9,11 +9,11 @@ interface Actions {
 interface Orders {
     Orders :MyOrders[]
 }
-export const ShopingCarStore = create(
+export const MyOrdersStore = create(
   persist<Orders & Actions>(
     (set) => ({
       Orders:[],
-      setOrder: (item) => set((state) => ({ ...state, items: { item } }))
+      setOrder: (item) => set((state) => ({ ...state, Orders:item }))
     }),
     { name: 'MyOrders' }
   )

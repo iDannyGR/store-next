@@ -19,8 +19,8 @@ const ProductsCart = (): React.ReactElement => {
       className={cx(
         'fixed flex flex-col right-14 z-20 mt-3 w-[450px] h-[90vh] items-center rounded-lg bg-white border border-slate-300 shadow-xl',
         {
-          'hidden translate-x-0 opacity-0 ': isOpen == false,
-          'visible translate-x-5 opacity-100': isOpen == true
+          'hidden  opacity-0 ': isOpen == false,
+          'visible opacity-100': isOpen == true
         }
       )}
     >
