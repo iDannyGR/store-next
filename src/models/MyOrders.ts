@@ -3,7 +3,7 @@ import { GetData } from '@/models/GetData';
 
 export interface MyOrders {
   date: string;
-  items: { [id: number]: GetData };
+  items: GetData [];
   totalProducts: number;
   totalPrice:number;
 }

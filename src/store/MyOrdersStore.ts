@@ -1,19 +1,18 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import { MyOrders  } from '@/models/MyOrders';
-import { GetData } from '@/models/GetData';
 
 interface Actions {
-  setOrder: (item: { [id: number]: GetData }) => void;
+  setOrder: (item:MyOrders) => void;
 }
 interface Orders {
-    Orders :MyOrders[]
+    Orders :{[id:MyOrders['date']]:MyOrders}
 }
 export const MyOrdersStore = create(
   persist<Orders & Actions>(
     (set) => ({
-      Orders:[],
-      setOrder: (item) => set((state) => ({ ...state, Orders:item }))
+      Orders:{},
+      setOrder: (item) => set((state) => ({...state, Orders:{[item.date]: item} })),
     }),
     { name: 'MyOrders' }
   )

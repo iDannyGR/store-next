@@ -16,11 +16,11 @@ const TotalPriceButton = ({total}: Props) => {
         const Order = {
             date: new Date().toISOString(),
             items:item,
-            totalProducts: totalProducts;
-            totalPrice:number;
+            totalProducts: totalProducts,
+            totalPrice:total,
         }
         
-        setOrder();
+        setOrder(Order);
     }
 
   return (
