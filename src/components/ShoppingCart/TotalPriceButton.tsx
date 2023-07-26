@@ -10,8 +10,7 @@ const TotalPriceButton = ({total}: Props) => {
     const { setOrder } = MyOrdersStore();
     const { item  }= ShopingCarStore();
 
-    const handleSubmit = (e:Event) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         const totalProducts = Object.values(item).reduce((total, item) => total + item.quantity, 0)
         const Order = {
             date: new Date().toISOString(),
@@ -19,14 +18,13 @@ const TotalPriceButton = ({total}: Props) => {
             totalProducts: totalProducts,
             totalPrice:total,
         }
-        
         setOrder(Order);
     }
 
   return (
     <button 
       className='absolute bottom-0 w-72 bg-red-500 text-white rounded-md p-3 my-2 hover:bg-red-950'
-      onClick={()=> handleSubmit}>
+      onClick={()=> handleSubmit()}>
       {total ? 'Check Out $' +  total : 'add a product' }
     </button>
   )

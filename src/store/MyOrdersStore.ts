@@ -11,9 +11,9 @@ interface Orders {
 export const MyOrdersStore = create(
   persist<Orders & Actions>(
     (set) => ({
-      Orders:{},
-      setOrder: (item) => set((state) => ({...state, Orders:{[item.date]: item} })),
+      Orders: {},
+       setOrder: (item) => set((state) => ({...state, Orders: {...state.Orders, [item.date]: item } }) )
     }),
-    { name: 'MyOrders' }
+       { name: 'MyOrders' }
   )
 );

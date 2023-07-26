@@ -14,9 +14,9 @@ const AddRemoveButton = ({id}: Props):React.ReactElement => {
        const { setRemProduct, setSumProduct}= useStoreProducts()
   
       return (
-        <div className="flex h-10 w-[90px] cursor-pointer items-center justify-center rounded-3xl border text-center font-semibold">
+        <div className="flex h-7 w-[90px] border-x-2 border-slate-400 rounded-md cursor-pointer items-center justify-center text-center font-semibold">
           <p onClick={()=> setRemProduct(id)}>-</p>
-          <input type="text" className="m-2 w-10 text-center" value={item[id]?.quantity} readOnly/>
+          <input type="text" className="m-2 w-7 text-center" value={item[id]?.quantity} readOnly/>
           <p onClick={() => setSumProduct(id) } >+</p>
         </div>
       );
