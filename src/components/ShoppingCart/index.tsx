@@ -4,10 +4,10 @@ import { useHasHydrated } from '@/hooks/useHasHydrated';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
 import ProductDetail from './ProductDetail';
 import cx from 'classnames';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import TotalPriceButton from './TotalPriceButton';
 import AddRemoveButton from '../buttons/AddRemoveButton';
 import DeleteProduct from '../buttons/DeleteProduct';
+import CloseModal from '../buttons/CloseModal';
 
 
 
@@ -18,6 +18,7 @@ const ProductsCart = (): React.ReactElement => {
   const totalPrice = parseFloat(
     Object.values(item).reduce((total, item) => total + item.total, 0).toFixed(2)
   );
+
   return (
     <aside
       className={cx(
@@ -29,10 +30,7 @@ const ProductsCart = (): React.ReactElement => {
       )}
     >
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
-      <XMarkIcon
-        className="absolute right-1 top-1 h-6 w-6 cursor-pointer text-red-500"
-        onClick={() => setisOpen(false)}
-      />
+        <CloseModal onClick={setisOpen}/>
       <div className='overflow-y-auto h-[75vh] w-full'>
         {hydration &&
           Object.values(item).map((article, index) => (
