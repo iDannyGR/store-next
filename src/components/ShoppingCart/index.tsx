@@ -7,21 +7,21 @@ import cx from 'classnames';
 import { XMarkIcon } from '@heroicons/react/24/outline';
 import TotalPriceButton from './TotalPriceButton';
 import AddRemoveButton from '../buttons/AddRemoveButton';
-import { TrashIcon } from '@heroicons/react/24/outline';
+import DeleteProduct from '../buttons/DeleteProduct';
 
 
 
 const ProductsCart = (): React.ReactElement => {
 
   const hydration = useHasHydrated();
-  const { item, setisOpen, isOpen, deleteArticle } = ShopingCarStore();
+  const { item, setisOpen, isOpen } = ShopingCarStore();
   const totalPrice = parseFloat(
     Object.values(item).reduce((total, item) => total + item.total, 0).toFixed(2)
   );
   return (
     <aside
       className={cx(
-        'fixed right-14 z-20 mt-3 flex h-[90vh] w-[450px] flex-col items-center rounded-lg border border-slate-300 bg-white shadow-xl',
+        'fixed flex flex-col items-center right-14 z-20 mt-3 h-[90vh] w-[450px] rounded-lg border border-slate-300 bg-white shadow-xl',
         {
           'hidden  opacity-0 ': isOpen == false,
           'visible opacity-100': isOpen == true
@@ -36,12 +36,10 @@ const ProductsCart = (): React.ReactElement => {
       <div className='overflow-y-auto h-[75vh] w-full'>
         {hydration &&
           Object.values(item).map((article, index) => (
-            <div className="flex items-center w-full">
+            <div className="flex items-center justify-center w-full">
               <ProductDetail product={article} key={index} />
               <AddRemoveButton id={article.id} />
-              <TrashIcon
-                className="h-6 w-6 ml-2 cursor-pointer text-rose-800 transition duration-200 ease-in hover:scale-150"
-                onClick={() => deleteArticle(article.id)}/>
+              <DeleteProduct id={article.id} />
             </div>
           ))}
       </div>

@@ -9,8 +9,7 @@ type Props = {
 
 const ProductDetail = ({product}: Props): React.ReactElement => {
   return (
-    <div className="flex w-full items-center justify-between p-3">
-      <div className="flex items-center justify-center">
+    <div className="flex items-center justify-between p-3">
         <Image
           src={product.image}
           width={50}
@@ -21,9 +20,8 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
         <p className="w-40 overflow-hidden overflow-ellipsis text-center text-sm font-light">
           {product.title}
         </p>
-      </div>
       <p className="text-md"> $ {product.price.toFixed(2)}</p>
-    </div>
+      </div>
   );
 };
 
