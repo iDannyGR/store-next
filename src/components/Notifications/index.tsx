@@ -3,7 +3,6 @@
 import React from 'react';
 import {  ArticleDetail } from '@/store/ArticleDetailStore';
 import cx from 'classnames';
-import { XMarkIcon } from '@heroicons/react/24/outline';
 import ProductDescription from './ProductDescription';
 import CloseModal from '../buttons/CloseModal';
 

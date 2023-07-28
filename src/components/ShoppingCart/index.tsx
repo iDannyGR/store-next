@@ -15,14 +15,15 @@ const ProductsCart = (): React.ReactElement => {
 
   const hydration = useHasHydrated();
   const { item, setisOpen, isOpen } = ShopingCarStore();
+  const SelectedArticle =  Object.values(item);
   const totalPrice = parseFloat(
-    Object.values(item).reduce((total, item) => total + item.total, 0).toFixed(2)
+    SelectedArticle.reduce((total, item) => total + item.total, 0).toFixed(2)
   );
 
   return (
     <aside
       className={cx(
-        'fixed flex flex-col items-center right-14 z-20 mt-3 h-[90vh] w-[450px] rounded-lg border border-slate-300 bg-white shadow-xl',
+        'fixed right-14 z-20 mt-3 flex h-[90vh] w-[450px] flex-col items-center rounded-lg border border-slate-300 bg-white shadow-xl',
         {
           'hidden  opacity-0 ': isOpen == false,
           'visible opacity-100': isOpen == true
@@ -30,12 +31,12 @@ const ProductsCart = (): React.ReactElement => {
       )}
     >
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
-        <CloseModal onClick={setisOpen}/>
-      <div className='overflow-y-auto h-[75vh] w-full'>
+      <CloseModal onClick={setisOpen} />
+      <div className="h-[75vh] w-full overflow-y-auto">
         {hydration &&
-          Object.values(item).map((article, index) => (
-            <div className="flex items-center justify-center w-full">
-              <ProductDetail product={article} key={index} />
+          SelectedArticle.map(article => (
+            <div className="flex w-full items-center justify-center">
+              <ProductDetail product={article} key={article.id} />
               <AddRemoveButton id={article.id} />
               <DeleteProduct id={article.id} />
             </div>

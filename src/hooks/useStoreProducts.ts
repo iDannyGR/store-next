@@ -16,7 +16,6 @@ export const useStoreProducts = ()=>{
           quantity: existingItem ? existingItem.quantity + 1 : 1,
           total: existingItem ? (existingItem.quantity + 1) * product.price : product.price
         };
-        console.log(newItem)
         setArticle(newItem)
     }
 
