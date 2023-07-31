@@ -7,9 +7,7 @@ import  MyOrder  from '@/components/MyOrders';
 const Orders = ():React.ReactElement => {
 const { Orders } = MyOrdersStore()
 return (
-  <section>
     <MyOrder />
-  </section>
 )
 }
 
