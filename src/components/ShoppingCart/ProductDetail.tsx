@@ -20,7 +20,7 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
         <p className="w-40 overflow-hidden overflow-ellipsis text-center text-sm font-light">
           {product.title}
         </p>
-      <p className="text-md"> $ {product.price.toFixed(2)}</p>
+      <p className="text-md"> $ </p>
       </div>
   );
 };

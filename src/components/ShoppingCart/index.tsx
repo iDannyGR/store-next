@@ -19,14 +19,16 @@ const ProductsCart = (): React.ReactElement => {
   const totalPrice = parseFloat(
     SelectedArticle.reduce((total, item) => total + item.total, 0).toFixed(2)
   );
-
+    function getHeight (){
+    return SelectedArticle.length > 0 ? 91 * SelectedArticle.length : 10;
+    }
   return (
     <aside
       className={cx(
-        'fixed right-14 z-20 mt-3 flex h-[90vh] w-[450px] flex-col items-center rounded-lg border border-slate-300 bg-white shadow-xl',
+        `fixed right-14 z-20 mt-3 w-[450px] flex flex-col items-center rounded-lg border border-slate-300 bg-white shadow-xl transition-all duration-500 ease-in-out`,
         {
-          'hidden  opacity-0 ': isOpen == false,
-          'visible opacity-100': isOpen == true
+          'h-0': isOpen == false,
+          [` h-[${getHeight()}px]`]: isOpen == true
         }
       )}
     >
@@ -34,9 +36,9 @@ const ProductsCart = (): React.ReactElement => {
       <CloseModal onClick={setisOpen} />
       <div className="h-[75vh] w-full overflow-y-auto">
         {hydration &&
-          SelectedArticle.map(article => (
-            <div className="flex w-full items-center justify-center">
-              <ProductDetail product={article} key={article.id} />
+          SelectedArticle.map((article) => (
+            <div className="flex w-full items-center justify-center" key={article.id}>
+              <ProductDetail product={article}/>
               <AddRemoveButton id={article.id} />
               <DeleteProduct id={article.id} />
             </div>

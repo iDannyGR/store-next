@@ -8,7 +8,7 @@ type Props = {
 
 const TotalPriceButton = ({total}: Props) => {
     const { setOrder } = MyOrdersStore();
-    const { item  }= ShopingCarStore();
+    const { item, setArticle  }= ShopingCarStore();
 
     const handleSubmit = () => {
         const totalProducts = Object.values(item).reduce((total, item) => total + item.quantity, 0)
@@ -19,6 +19,7 @@ const TotalPriceButton = ({total}: Props) => {
             totalPrice:total,
         }
         setOrder(Order);
+        setArticle('')
     }
 
   return (
