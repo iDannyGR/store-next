@@ -20,6 +20,7 @@ const ProductsCart = (): React.ReactElement => {
   const totalPrice = parseFloat(
     SelectedArticle.reduce((total, item) => total + item.total, 0).toFixed(2)
   );
+
   return (
     <aside
       className={cx(
@@ -32,7 +33,7 @@ const ProductsCart = (): React.ReactElement => {
     >
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
       <CloseModal onClick={setisOpen} />
-      <div className={`h-[${dynamicHeight}px] w-full overflow-y-auto`}>
+      <div className='h-[750px] w-full overflow-y-auto'>
         {hydration &&
           SelectedArticle.map((article) => (
             <div className="flex w-full items-center justify-center" key={article.id}>
@@ -43,7 +44,8 @@ const ProductsCart = (): React.ReactElement => {
           ))}
       </div>
       {hydration && <TotalPriceButton total={totalPrice} />}
-    </aside>
+  
+      </aside>
   );
 };
 
