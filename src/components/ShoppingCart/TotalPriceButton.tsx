@@ -2,6 +2,7 @@
 import React from 'react';
 import { MyOrdersStore } from '@/store/MyOrdersStore';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { GetData } from '@/models/GetData';
 type Props = {
     total:number
 }
@@ -19,13 +20,14 @@ const TotalPriceButton = ({total}: Props) => {
             totalPrice:total,
         }
         setOrder(Order);
-        setArticle('')
+        setArticle({} as GetData);
     }
 
   return (
     <button 
       className='absolute bottom-0 w-72 bg-red-500 text-white rounded-md p-3 my-2 hover:bg-red-950'
-      onClick={()=> handleSubmit()}>
+      onClick={()=> handleSubmit()}
+      disabled={true} >
       {total ? 'Check Out $' +  total : 'add a product' }
     </button>
   )

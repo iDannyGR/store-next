@@ -34,8 +34,8 @@ const ProductsCart = (): React.ReactElement => {
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
       <CloseModal onClick={setisOpen} />
       <div className='h-[750px] w-full overflow-y-auto'>
-        {hydration &&
-          SelectedArticle.map((article) => (
+        {hydration && SelectedArticle !== null &&
+          SelectedArticle?.map((article) => (
             <div className="flex w-full items-center justify-center" key={article.id}>
               <ProductDetail product={article}/>
               <AddRemoveButton id={article.id} />
