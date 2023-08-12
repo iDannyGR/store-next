@@ -10,9 +10,10 @@ type Props = {
 const TotalPriceButton = ({total}: Props) => {
     const { setOrder } = MyOrdersStore();
     const { item, setArticle  }= ShopingCarStore();
+    const Products = Object.values(item);
 
     const handleSubmit = () => {
-        const totalProducts = Object.values(item).reduce((total, item) => total + item.quantity, 0)
+        const totalProducts = Products.reduce((total, item) => total + item.quantity, 0)
         const Order = {
             date: new Date().toISOString(),
             items:item,
@@ -27,7 +28,7 @@ const TotalPriceButton = ({total}: Props) => {
     <button 
       className='absolute bottom-0 w-72 bg-red-500 text-white rounded-md p-3 my-2 hover:bg-red-950'
       onClick={()=> handleSubmit()}
-      disabled={true} >
+      disabled={Products.length === 0 } >
       {total ? 'Check Out $' +  total : 'add a product' }
     </button>
   )

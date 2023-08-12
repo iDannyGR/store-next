@@ -1,8 +1,9 @@
 import Navbar from '@/components/Navbar';
 import './globals.css';
 import { Chakra_Petch } from 'next/font/google';
-import ProductsCart from '@/components/ShoppingCart';
-import NotificationItem from '@/components/Notifications';
+import NotificationItem from '@/components/ProductDescription';
+import SideBar from '@/components/SideBar';
+import ProductDescription from '@/components/ProductDescription';
 const inter = Chakra_Petch({subsets:['latin'],weight:['300']})
 
 export const metadata = {
@@ -19,11 +20,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Navbar />
-        <ProductsCart />
-        <NotificationItem />
-        <section className="mt-20 flex justify-center">
-          {children}
-        </section>
+        <SideBar children={<ProductDescription />} />
+        <section className="mt-20 flex justify-center">{children}</section>
       </body>
     </html>
   );
