@@ -18,6 +18,7 @@ const card = ({product}: Props):React.ReactElement => {
       const { addProduct } = useStoreProducts()
       
     const handleClick = (item:GetData) => { 
+          setisOpen(true);
           setisShow(true);
           setItem(item);
     }

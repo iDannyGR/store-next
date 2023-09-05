@@ -9,6 +9,7 @@ const NotificationButton = ():React.ReactElement=> {
   
   const { item, setisOpen, isOpen } = ShopingCarStore();
   const { setisShow } = ArticleDetail();
+  
   const hydration = useHasHydrated();
 
     const handleClick = () =>{
