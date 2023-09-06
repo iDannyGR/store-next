@@ -31,20 +31,36 @@ export const useStoreProducts = ()=>{
       }
     };
 
-   const setRemProduct = (id: GetData['id']) => {
-     const itemToUpdate = item[id];
+  //  const setRemProduct = (id: GetData['id']) => {
+  //    const itemToUpdate = item[id];
 
-     if (itemToUpdate && itemToUpdate.quantity > 0) {
-       const updatedItem = {
-         ...itemToUpdate,
-         quantity: itemToUpdate.quantity - 1,
-         total: itemToUpdate.total - itemToUpdate.price
-       };
-       setArticle(updatedItem);
-     } else if (itemToUpdate && itemToUpdate.quantity === 0) {
-       deleteArticle(id);
-     }
-   };
+  //    if (itemToUpdate && itemToUpdate.quantity > 0) {
+  //      const updatedItem = {
+  //        ...itemToUpdate,
+  //        quantity: itemToUpdate.quantity - 1,
+  //        total: itemToUpdate.total - itemToUpdate.price
+  //      };
+  //      setArticle(updatedItem);
+  //    } else if (itemToUpdate && itemToUpdate.quantity === 0) {
+  //      deleteArticle(id);
+  //    }
+  //  };
+    const setRemProduct = (id: GetData['id']) => {
+      const itemToUpdate = item[id];
+
+      if (!itemToUpdate || itemToUpdate.quantity === 0) {
+        deleteArticle(id);
+        return;
+      }
+
+      const updatedItem = {
+        ...itemToUpdate,
+        quantity: itemToUpdate.quantity - 1,
+        total: itemToUpdate.total - itemToUpdate.price
+      };
+
+      setArticle(updatedItem);
+    };
     
     return { addProduct, setSumProduct, setRemProduct };
 

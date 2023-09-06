@@ -16,7 +16,7 @@ const SideBar = ():React.ReactElement => {
   return (
     <aside 
     className={cx(
-        `fixed h-[100vh] right-0 z-20 flex flex-col items-center bg-white shadow-2xl transition ease-in-out duration-150`,
+        `fixed h-[100vh] right-0 z-20 flex flex-col items-center bg-white shadow-2xl transition ease-in-out duration-350`,
         {
           'opacity-0 w-0': isOpen === false,
           'w-[450px]': isOpen === true

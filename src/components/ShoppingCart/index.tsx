@@ -11,7 +11,7 @@ import { ShopingCarStore } from '@/store/ShopingCarStore';
 
 
 const ProductsCart = (): React.ReactElement => {
-  const { item, setisOpen } = ShopingCarStore()
+  const { item, setisOpen,isOpen } = ShopingCarStore()
   const hydration = useHasHydrated();
   const SelectedArticle =  Object.values(item);
   const totalPrice = parseFloat(
@@ -26,22 +26,29 @@ const ProductsCart = (): React.ReactElement => {
     }, [item]);
 
   return (
-    <div className='flex flex-col items-center w-full h-full'>
+    <div className={isOpen ? 'flex h-full w-full flex-col items-center' : 'hidden'}>
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
       <CloseModal onClick={setisOpen} />
-      <div className='h-[750px] w-full overflow-y-auto'>
-        {hydration && SelectedArticle.length !== 0 &&
-          SelectedArticle.map((article) => (
-            <div className="flex w-full items-center justify-center">
-              <ProductDetail product={article} key={article.id}/>
-              <AddRemoveButton id={article.id} />
-              <DeleteProduct id={article.id} />
-            </div>
-          ))}
+      <div className="h-[750px] w-full overflow-y-auto">
+        {hydration &&
+          SelectedArticle.map((article) => {
+            // Verificar si la cantidad del artículo es mayor que cero
+            if (article.quantity > 0) {
+              return (
+                <div className="flex w-full items-center justify-center" key={article.id}>
+                  <ProductDetail product={article} />
+                  <AddRemoveButton id={article.id} />
+                  <DeleteProduct id={article.id} />
+                </div>
+              );
+            } else {
+              // No mostrar el artículo si la cantidad es cero
+              return null;
+            }
+          })}
       </div>
       {hydration && <TotalPriceButton total={totalPrice} />}
     </div>
- 
   );
 };
 

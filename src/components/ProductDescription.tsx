@@ -8,10 +8,10 @@ import { ShopingCarStore } from '@/store/ShopingCarStore';
 
 const ProductDescription = (): React.ReactElement => {
   const { item } = ArticleDetail();
-  const { setisOpen } = ShopingCarStore();
+  const { setisOpen,isOpen } = ShopingCarStore();
   
   return (
-    <div className="my-1 flex w-full flex-col items-center justify-between p-3">
+    <div className={isOpen ? 'my-1 flex w-full flex-col items-center justify-between p-3' : 'hidden'}>
       <CloseModal onClick={setisOpen} />
       <p className="mt-4 text-center text-lg font-bold">Product Details</p>
       <Image
