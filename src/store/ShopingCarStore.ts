@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware'
-import { GetData, Rating } from '@/models/GetData';
+import { GetData } from '@/models/GetData';
 
 interface State {
   item: { [id: number]: GetData }; //find products by id

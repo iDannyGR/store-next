@@ -41,10 +41,7 @@ const ProductsCart = (): React.ReactElement => {
                   <DeleteProduct id={article.id} />
                 </div>
               );
-            } else {
-              // No mostrar el artículo si la cantidad es cero
-              return null;
-            }
+            } else {return null;}
           })}
       </div>
       {hydration && <TotalPriceButton total={totalPrice} />}

@@ -17,7 +17,7 @@ async function getData(): Promise<GetData[]> {
  const data = await getData()
   return (
     <div className="mt-20 grid grid-cols-4 gap-12">
-      {data.map(product => (
+      {data && data.map(product => (
         <Card product={product} />
       ))}
     </div>
