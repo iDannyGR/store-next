@@ -23,6 +23,6 @@ const ProductDetail = ({product}: Props): React.ReactElement => {
       <p className="text-md"> $ </p>
       </div>
   );
-};
+}; 
 
 export default ProductDetail;
