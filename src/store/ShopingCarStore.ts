@@ -18,7 +18,7 @@ interface Actions {
 export const ShopingCarStore = create(
   persist<State & Actions>(
     (set) => ({
-      item: {},
+      item:[],
       isOpen: false,
       setArticle: (article) => set((state) => ({...state, item: {...state.item, [article.id]: article }})),
       setisOpen: (value) => set((state) => ({ isOpen: value })),
