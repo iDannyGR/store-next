@@ -9,7 +9,7 @@ type Props = {
 
 const TotalPriceButton = ({total}: Props) => {
     const { setOrder } = MyOrdersStore();
-    const { item, setArticle  }= ShopingCarStore();
+    const { item, clearCart  }= ShopingCarStore();
     const Products = Object.values(item);
 
     const handleSubmit = () => {
@@ -21,14 +21,15 @@ const TotalPriceButton = ({total}: Props) => {
             totalPrice:total,
         }
         setOrder(Order);
-        setArticle({} as GetData);
+        clearCart();
+
     }
 
   return (
     <button 
       className='w-72 bg-red-500 text-white rounded-md p-3 my-2 hover:bg-red-950'
       onClick={()=> handleSubmit()}
-      disabled={Products.length === 0 } >
+      disabled={Products.length === 0  } >
       {total ? 'Check Out $' +  total : 'add a product' }
     </button>
   )
