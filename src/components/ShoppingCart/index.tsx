@@ -14,17 +14,7 @@ const ProductsCart = (): React.ReactElement => {
   const { item, setisOpen,isOpen } = ShopingCarStore()
   const hydration = useHasHydrated();
   const SelectedArticle =  Object.values(item);
-  const totalPrice = parseFloat(
-    SelectedArticle.reduce((total, item) => total + item.total, 0).toFixed(2)
-  );
-
-    React.useEffect(() => {
-      if (!hydration) {
-        // Limpiar el estado del componente después de que se elimine el artículo.
-        
-      }
-    }, [item]);
-
+ 
   return (
     <div className={isOpen ? 'flex h-full w-full flex-col items-center' : 'hidden'}>
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
@@ -44,7 +34,7 @@ const ProductsCart = (): React.ReactElement => {
             } else {return null;}
           })}
       </div>
-      {hydration && <TotalPriceButton total={totalPrice} />}
+      {hydration && <TotalPriceButton />}
     </div>
   );
 };

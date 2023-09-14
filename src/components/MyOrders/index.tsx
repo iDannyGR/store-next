@@ -3,15 +3,16 @@ import React from 'react'
 import { MyOrdersStore } from '@/store/MyOrdersStore';
 import OrderCard from './OrderCard';
 
-type Props = {}
 
-const MyOrder = (props: Props):React.ReactElement => {
+const MyOrder = ():React.ReactElement => {
     const { Orders } = MyOrdersStore();
     const StoredOrders =  Object.values(Orders);
-
   return (
-
-<p>hola</p>
+  <section className='grid grid-flow-col grid-col-3 grid-rows-3 gap-8'>
+    {StoredOrders.map(Order => (
+     <OrderCard  order={Order}/>
+    ))}
+  </section>
   )
 }
 
