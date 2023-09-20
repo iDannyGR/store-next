@@ -10,18 +10,19 @@ const OrderCard = ({ order }: OrdersProps) => {
   const items = Object.values(order.items)
   const hydrated = useHasHydrated()
   return (
-    <article className="h-auto w-[350px] rounded-xl shadow-md space-y-3" key={order.date}>
+    <article className="flex flex-col items-center justify-center h-auto w-[350px] rounded-xl shadow-md space-y-3" key={order.date}>
       <p>Order ID: </p>
       <p>Date:{order.date}</p>
         <p className="font-bold text-center">Products</p>
         {hydrated && items.map( item => (
-      <div className="flex w-full gap-9  items-center justify-center rounded-lg">
-            <p>{item.title}</p>
+      <div className="flex w-full gap-1  items-center justify-center rounded-lg">
+            <p className='text-sm truncate'>{item.title}</p>
             <Image 
             alt={item.title}
             src={item.image}
-            width={50}
-            height={50}
+            width={40}
+            height={40}
+            className='shadow-sm rounded-sm object-cover'
             />
           </div>
         ))}
