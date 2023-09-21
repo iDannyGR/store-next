@@ -2,6 +2,7 @@
 import React from 'react';
 import { MyOrdersStore } from '@/store/MyOrdersStore';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
+import { RamdomId } from '@/hooks/useRamdomId';
 
 
 
@@ -13,7 +14,8 @@ const TotalPriceButton = ():React.ReactElement => {
     const handleSubmit = () => {
         const totalProducts = Products.reduce((total, item) => total + item.quantity, 0)
         const Order = {
-          date: new Date().toISOString(),
+          id: RamdomId(),
+          date: new Date().toUTCString(),
           items: item,
           totalProducts: totalProducts,
           totalPrice: totalPrice
