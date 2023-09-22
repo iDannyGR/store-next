@@ -1,34 +1,27 @@
-import Image from 'next/image';
+'use client'
+import { BanknotesIcon } from '@heroicons/react/24/outline'
+import { ListBulletIcon } from '@heroicons/react/24/outline'
+import { CalendarDaysIcon } from '@heroicons/react/24/outline'
 import { MyOrders } from '@/models/MyOrders';
-import { useHasHydrated } from '@/hooks/useHasHydrated';
-
-type OrdersProps = {
-  order:MyOrders
+import GoToOrder from '../buttons/GoToOrder';
+type OrderProps = {
+    order : MyOrders
 }
 
-const OrderCard = ({ order }: OrdersProps) => {
-  const items = Object.values(order.items)
-  const hydrated = useHasHydrated()
+const OrderCard = ({order}: OrderProps) => {
   return (
-    <article className="flex flex-col h-auto max-w-[350px] rounded-xl shadow-md space-y-3 p-2" key={order.date}>
-        <p className="font-bold text-center">Products</p>
-        {hydrated && items.map( item => (
-      <div className="flex w-full items-center justify-center rounded-lg gap-3 p-4">
-            <p className='text-sm truncate'>{item.title}</p>
-            <Image 
-            alt={item.title}
-            src={item.image}
-            width={40}
-            height={40}
-            className='shadow-sm rounded-sm object-cover'
-            />
-          </div>
-        ))}
-      <div className="flex w-full justify-around">
-        <p className="font-bold">Quantity: {order.totalProducts} </p>
-        <p className="font-bold">Total: $ {order.totalPrice} </p>
-      </div>
-    </article>
+    <div
+      className="relative flex h-32 w-[450px] items-center justify-center gap-4 rounded-lg p-4 shadow-lg"
+      key={order.id}
+    >
+      <GoToOrder id={order.id}/>
+      <BanknotesIcon className="h-6 w-6" />
+      <p>${order.totalPrice}</p>
+      <p>Total of Items: {order.totalProducts}</p>
+      <ListBulletIcon className="h-6 w-6" />
+      <p>{order.date.split(',')[0]}</p>
+      <CalendarDaysIcon className="h-6 w-6" />
+    </div>
   );
 };
 

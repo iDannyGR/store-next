@@ -15,7 +15,7 @@ const TotalPriceButton = ():React.ReactElement => {
         const totalProducts = Products.reduce((total, item) => total + item.quantity, 0)
         const Order = {
           id: RamdomId(),
-          date: new Date().toUTCString(),
+          date: new Date().toLocaleString(),
           items: item,
           totalProducts: totalProducts,
           totalPrice: totalPrice
