@@ -1,6 +1,8 @@
+import OrderDetails from "@/components/MyOrders/OrderDetails";
 
 export default function OrderId() {
+  
   return (
-    <div>this my specific order</div>
+    <OrderDetails />
   )
 }
