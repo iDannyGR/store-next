@@ -7,11 +7,11 @@ const MyOrder = ():React.ReactElement => {
     const { Orders } = MyOrdersStore();
     const StoredOrders =  Object.values(Orders);
   return (
-  <section className='grid grid-flow-col grid-col-3 grid-rows-3 gap-8'>
+  <div className='grid grid-flow-col grid-col-3 grid-rows-3 gap-8'>
     {StoredOrders.map(Order => (
      <OrderCard  order={Order}/>
     ))}
-  </section>
+  </div>
   )
 }
 

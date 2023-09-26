@@ -19,7 +19,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         <SideBar />
-        <section className="mt-20 flex justify-center">{children}</section>
+        <main className="mt-20 flex justify-center">{children}</main>
       </body>
     </html>
   );

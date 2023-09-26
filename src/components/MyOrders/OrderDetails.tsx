@@ -13,13 +13,11 @@ const OrderDetails = () => {
   const hydrated = useHasHydrated();
 
   return (
-    <article className="flex h-auto max-w-[550px] flex-col rounded-xl p-2 gap-4">
-      <p className="text-center font-bold">Products</p>
+    <article className="flex h-auto max-w-[650px] flex-col rounded-xl p-2 gap-4 bg-white">
+      <h2 className="text-center font-bold text-2xl">Products</h2>
       {hydrated &&
         articles.map((article) => (
-          <div className="flex w-full items-center justify-between rounded-lg p-4 shadow-lg">
-            <p className="text-sm">{article.title}</p>
-            <p className='mx-4'>{article.quantity}</p>
+          <div className="flex w-[550px] items-center justify-between p-4 border-b-2">
             <Image
               alt={article.title}
               src={article.image}
@@ -27,6 +25,8 @@ const OrderDetails = () => {
               height={40}
               className="object-cover"
             />
+            <p className="text-md">{article.title}</p>
+            <p className='mx-4'>{article.quantity}</p>
           </div>
         ))}
       <div className="flex w-full justify-around mt-6">

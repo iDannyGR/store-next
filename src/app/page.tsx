@@ -16,10 +16,10 @@ async function getData(): Promise<GetData[]> {
  export default async function Home() {
  const data = await getData()
   return (
-    <div className="mt-20 grid grid-cols-4 gap-12">
+    <article className="grid grid-cols-4 gap-12">
       {data && data.map(product => (
         <Card product={product} />
       ))}
-    </div>
+    </article>
   );
 }
