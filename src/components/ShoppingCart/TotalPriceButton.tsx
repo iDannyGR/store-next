@@ -1,5 +1,5 @@
 'use client'
-import React from 'react';
+import { redirect } from 'next/navigation';
 import { MyOrdersStore } from '@/store/MyOrdersStore';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
 import { RamdomId } from '@/hooks/useRamdomId';
@@ -10,7 +10,8 @@ const TotalPriceButton = ():React.ReactElement => {
     const { setOrder } = MyOrdersStore();
     const { item, clearCart  }= ShopingCarStore();
     const Products = Object.values(item);
-     const totalPrice = parseFloat(Products.reduce((total, item) => total + item.total, 0).toFixed(2));
+    const totalPrice = parseFloat(Products.reduce((total, item) => total + item.total, 0).toFixed(2));
+
     const handleSubmit = () => {
         const totalProducts = Products.reduce((total, item) => total + item.quantity, 0)
         const Order = {
@@ -22,7 +23,7 @@ const TotalPriceButton = ():React.ReactElement => {
         };
         setOrder(Order);
         clearCart();
-
+        redirect(`orders/${Order.id}`);
     }
 
   return (
