@@ -10,7 +10,7 @@ import ProductsCart from './ShoppingCart';
 
 const SideBar = ():React.ReactElement => {
   
-  const { isOpen } = ShopingCarStore();
+  const { isOpen, item } = ShopingCarStore();
   const { isShow } = ArticleDetail();
 
   return (

@@ -2,19 +2,17 @@
 import React from 'react';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
 import ProductDetail from './ProductDetail';
-import TotalPriceButton from './TotalPriceButton';
+import TotalPriceButton from '../buttons/TotalPriceButton';
 import AddRemoveButton from '../buttons/AddRemoveButton';
 import DeleteProduct from '../buttons/DeleteProduct';
 import CloseModal from '../buttons/CloseModal';
 import { ShopingCarStore } from '@/store/ShopingCarStore';
 
-
-
 const ProductsCart = (): React.ReactElement => {
-  const { item, setisOpen,isOpen } = ShopingCarStore()
+  const { item, setisOpen, isOpen } = ShopingCarStore();
   const hydration = useHasHydrated();
-  const SelectedArticle =  Object.values(item);
- 
+  const SelectedArticle = Object.values(item);
+
   return (
     <div className={isOpen ? 'flex h-full w-full flex-col items-center' : 'hidden'}>
       <p className="mt-4 text-center text-lg font-bold">My Order</p>
@@ -31,7 +29,9 @@ const ProductsCart = (): React.ReactElement => {
                   <DeleteProduct id={article.id} />
                 </div>
               );
-            } else {return null;}
+            } else {
+              return null;
+            }
           })}
       </div>
       {hydration && <TotalPriceButton />}
