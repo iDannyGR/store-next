@@ -3,43 +3,40 @@ import { routes } from '@/models/MenuList'
 let routes: routes[] = [
   {
     name: 'All',
-    route: '/',
+    route: '/'
   },
   {
-    name: 'Clothes',
-    route: '/clothes',
+    name: 'Jewelery',
+    route: '/jewelery'
   },
   {
     name: 'Electronics',
-    route: '/electronics',
+    route: '/electronics'
   },
   {
-    name: 'Furnitures',
-    route: '/furnitures',
+    name: "men's clothing",
+    route: "/men's clothing"
   },
   {
-    name: 'Toys',
-    route: '/toys',
-  },
-  {
-    name: 'Others',
-    route: '/others',
-  },
+    name: "women's clothing",
+    route: "/women's clothing"
+  }
 ];
 
 let dta: routes[] = [
   {
     name: 'My Orders',
-    route: '/orders',
+    route: 'orders',
   },
   {
     name: 'My Account',
-    route: '/account',
+    route: 'account',
   },
   {
     name: 'sign In',
-    route: '/login',
+    route: 'login',
   },
 ];
 
 export {dta, routes}
+

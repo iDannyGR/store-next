@@ -15,11 +15,13 @@ const MenuItem = ({ menu, mainTitle }: Props) => {
 
   return (
     <ul className="m-5 flex gap-3 font-bold">
-      <li className='text-red-300 font-extrabold'>{mainTitle}</li>
+      <li className="font-extrabold text-red-300">{mainTitle}</li>
       {menu.map((item: routes, index: number) => (
         <li key={index}>
           <Link
-            href={item.route}
+            href={
+              item.route === '/' ? '/' : mainTitle === 'Store' ? `/categories${item.route}` : item.route
+            }
             className={currentNav === item.route ? 'text-red-600 underline decoration-solid' : ''}
           >
             {item.name}
