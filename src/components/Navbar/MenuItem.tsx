@@ -7,10 +7,11 @@ import { routes } from '@/models/MenuList';
 
 type Props = {
   menu: routes[];
-  mainTitle:string
+  mainTitle:string;
+  path?: string
 };
 
-const MenuItem = ({ menu, mainTitle }: Props) => {
+const MenuItem = ({ menu, mainTitle, path='/' }: Props) => {
   const currentNav = usePathname();
 
   return (
@@ -19,8 +20,8 @@ const MenuItem = ({ menu, mainTitle }: Props) => {
       {menu.map((item: routes, index: number) => (
         <li key={index}>
           <Link
-            href={
-              item.route === '/' ? '/' : mainTitle === 'Store' ? `/categories${item.route}` : item.route
+            href={item.route === '/' ? '/' : path+item.route
+              // item.route != '/' && mainTitle === 'Store' ? `/categories${item.route}` : item.route
             }
             className={currentNav === item.route ? 'text-red-600 underline decoration-solid' : ''}
           >

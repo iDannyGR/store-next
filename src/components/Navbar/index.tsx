@@ -9,7 +9,7 @@ const Navbar = () => {
   return (
     <nav className="sticky top-0 z-10 flex bg-white shadow-lg">
       <div className="flex w-[90%] justify-between">
-        <MenuItem menu={routes} mainTitle="Store" />
+        <MenuItem menu={routes} mainTitle="Store" path='/categories'/>
         <MenuItem menu={dta} mainTitle="soporte@admin.com" />
       </div>
       <NotificationButton />
@@ -17,4 +17,4 @@ const Navbar = () => {
   );
 }
 
-export default Navbar
+export default React.memo(Navbar)
