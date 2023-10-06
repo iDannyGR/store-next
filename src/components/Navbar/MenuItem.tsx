@@ -11,7 +11,6 @@ type Props = {
 
 const MenuItem = ({ menu, mainTitle}: Props) :React.ReactElement => {
   const currentNav = usePathname();
-  console.log(currentNav);
 
   return (
     <ul className="m-5 flex gap-3 font-bold">

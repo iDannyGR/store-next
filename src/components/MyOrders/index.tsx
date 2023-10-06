@@ -8,7 +8,7 @@ const MyOrder = ():React.ReactElement => {
   return (
       <div className='w-full h-full grid grid-flow-col grid-col-4 grid-rows-4 gap-8 overflow-y-auto'>
         {StoredOrders.map(Order => (
-        <OrderCard  order={Order}/>
+        <OrderCard  order={Order} key={Order.id}/>
         ))}
     </div>
   )

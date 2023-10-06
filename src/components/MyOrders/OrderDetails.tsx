@@ -4,10 +4,9 @@ import { MyOrdersStore } from '@/store/MyOrdersStore';
 import { useHasHydrated } from '@/hooks/useHasHydrated';
 import { useParams } from 'next/navigation';
 
-
 const OrderDetails = () => {
+  const {id} = useParams()
   const { Orders } = MyOrdersStore(); 
-  const { id } = useParams();
   const ActualOrder = Orders[id];
   const articles = Object.values(ActualOrder.items);
   const hydrated = useHasHydrated();
@@ -18,7 +17,7 @@ const OrderDetails = () => {
       <div className="overflow-y-auto">
         {hydrated &&
           articles.map((article) => (
-            <div className="flex w-[550px] items-center justify-between  border-b-2 p-4">
+            <div className="flex w-[550px] items-center justify-between  border-b-2 p-4" key={article.id}>
               <Image
                 alt={article.title}
                 src={article.image}
