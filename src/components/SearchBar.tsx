@@ -12,16 +12,16 @@ const SearchBar = (): React.ReactElement => {
     };
 
   return (
-    <div className='relative flex justify-center'>
+    <div className='relative flex justify-center items-center'>
       <input
         type="text"
         name="search"
         id="search"
         value={search}
         onChange={handleChange}
-        className="mt-3 w-96 rounded-lg p-4"
+        className="w-96 h-12 border-b border-black "
       />
-        <MagnifyingGlassPlusIcon className='absolute w-6 h-6 left-0 top-8' />
+        <MagnifyingGlassPlusIcon className='absolute w-6 h-6 left-0 top-0' />
     </div>
   );
 }
