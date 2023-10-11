@@ -1,26 +1,25 @@
 'use client'
-import { SearchStore } from '@/store/SearchStore';
-import { ChangeEvent } from 'react';
+import React from 'react';
 import {MagnifyingGlassPlusIcon } from '@heroicons/react/20/solid';
 import { useRouter } from 'next/navigation';
 
 const Search = (): React.ReactElement => {
-    const { setSearch, search } = SearchStore();
-    const router = useRouter();
-    const handleChange = (e:ChangeEvent<HTMLInputElement>) => {
-      setSearch(e.target.value);
-      router.push(`/search?${e.target.value}`)
-    };
+  const [search, setSearch] = React.useState<string>('');
+  const router = useRouter();
 
+  React.useEffect(() => {
+      router.push(`?search=${search}`)
+  }, [search])
+  
   return (
     <div className='relative flex justify-center items-center'>
       <input
         type="text"
         placeholder='Search a Products'
         name="search"
-        id="search"
         value={search}
-        onChange={handleChange}
+        id="search"
+        onChange={( e )=> setSearch(e.target.value)}
         className="w-96 h-12 border-b border-black focus:outline-0 pl-8 text-center"
       />
         <MagnifyingGlassPlusIcon className='absolute w-6 h-6 left-0 top-5 text-gray-400' />
@@ -28,4 +27,4 @@ const Search = (): React.ReactElement => {
   );
 }
 
-export default Search
+export default Search;

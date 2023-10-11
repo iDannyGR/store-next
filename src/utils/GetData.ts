@@ -2,7 +2,6 @@ import { GetData } from '@/models/GetData';
 
 export async function getData(category?:string): Promise<GetData[]> {
 
-
   try {
     let response;
 
