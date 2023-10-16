@@ -8,8 +8,8 @@ const Search = (): React.ReactElement => {
   const router = useRouter();
 
   React.useEffect(() => {
-      router.push(`?search=${search}`)
-  }, [search])
+      search === '' ? router.push('/') : router.push(`?search=${search}`)
+  }, [search, router])
   
   return (
     <div className='relative flex justify-center items-center'>

@@ -1,11 +1,12 @@
-'use client'
 
 import Card from '@/components/Card';
 import { getData } from '@/utils/GetData';
-import { useParams } from 'next/navigation';
 
-export default async function categories() {
-  const {category} = useParams()
+interface ParamsProps {
+  params: { category: string };
+}
+export default async function categories({params}:ParamsProps) {
+  const {category} = params
   const data = await getData(category);
   
   return (
