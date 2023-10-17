@@ -1,7 +1,7 @@
 import Card from '@/components/Card';
+import SearchEmpty from '@/components/SearchEmpty';
 import { getData } from '@/utils/GetData';
-import Lottie from 'lottie-react';
-import noSearch from '@/assets/noSearch.json'
+
 
 
 type Props = {
@@ -19,8 +19,8 @@ type Props = {
         }
    return (
      <article className="grid grid-cols-4 gap-12">
-      {data.length === 0 && <Lottie animationData={noSearch}/>}
-      {data && filterData.map((product) => <Card product={product} />)}
+       {filterData.length === 0 && <SearchEmpty />}
+       {data && filterData.map((product) => <Card product={product} />)}
      </article>
    );
  }
