@@ -1,18 +1,15 @@
 import { getData } from '@/utils/GetData';
 
 interface searchProps {
-  search?: string,
-  category?:string
+  search: string,
 }
 
-export  const useSearch = async ({search='', category=''}:searchProps) => {
-  
-  
-  const data = await getData(category);
+export  const useSearch = async ({search}:searchProps) => {
+   const data = await getData();
    let filterData;
 
-   if (data && search) {
-     filterData = data.filter((article) => article.title.toLowerCase().includes(search as string));
+   if (data && search !== undefined && search !== '') {
+     filterData = data.filter((article) => article.title.toLowerCase().includes(search));
    } else {
      filterData = data;
    }

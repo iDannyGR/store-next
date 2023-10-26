@@ -1,16 +1,22 @@
 import Card from '@/components/Card';
 import SearchEmpty from '@/components/SearchEmpty';
-import { useSearch } from '@/hooks/useSearch';
+import { getData } from '@/utils/GetData';
 
 
 type Props = {
-  searchParams: {search: string};
+  searchParams: {search?: string};
 };
 
  export default async function Home({ searchParams }:Props) {
    
-   const { search } = searchParams
-   const filterData = await useSearch(search)
+   const data = await getData();
+   let filterData;
+    const { search } = searchParams;
+   if (data && search !== undefined && search !== '') {
+     filterData = data.filter((article) => article.title.toLowerCase().includes(search));
+   } else {
+     filterData = data;
+   }
 
    return (
      <article className="grid grid-cols-4 gap-12">
